@@ -1,5 +1,7 @@
 package co.alleys.whattheflux.rxflux.stores;
 
+import android.util.Log;
+
 import com.hardsoftstudio.rxflux.action.RxAction;
 import com.hardsoftstudio.rxflux.dispatcher.Dispatcher;
 import com.hardsoftstudio.rxflux.store.RxStore;
@@ -13,6 +15,7 @@ import co.alleys.whattheflux.rxflux.actions.Keys;
  */
 public class TimeStore extends RxStore implements TimeStoreInterface {
 
+    //Store Id
     public static final String ID = "TimeStore";
     private static TimeStore instance;
     private Long time;
@@ -28,6 +31,7 @@ public class TimeStore extends RxStore implements TimeStoreInterface {
 
     @Override
     public void onRxAction(RxAction action) {
+        Log.d("Flow", "onRxAction");
         switch (action.getType()) {
             case Actions.GET_CURRENT_TIME:
                 this.time = action.get(Keys.TIME);

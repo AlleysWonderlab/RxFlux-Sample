@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = v.getId();
         switch (id) {
             case R.id.btn_get_current_time: {
+                Log.d("onClick", "getRxStoreListToRegister");
                 ((App) getApplicationContext())
                         .getTimeActionCreator()
                         .getCurrentTime();
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onRxStoreChanged(@NonNull RxStoreChange change) {
+        Log.d("Flow", "onRxStoreChanged");
         switch (change.getStoreId()) {
             case TimeStore.ID: {
                 switch (change.getRxAction().getType()) {
@@ -81,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Nullable
     @Override
     public List<RxStore> getRxStoreListToRegister() {
+        Log.d("Flow", "getRxStoreListToRegister");
         timeStore = TimeStore.get(App.get(this).getRxFlux().getDispatcher());
         List<RxStore> rxStoreList = new ArrayList<>();
         rxStoreList.add(timeStore);

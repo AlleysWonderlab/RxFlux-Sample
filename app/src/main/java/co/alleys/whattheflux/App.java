@@ -14,7 +14,6 @@ import co.alleys.whattheflux.rxflux.actions.TimeActionCreator;
 public class App extends Application {
 
     private RxFlux rxFlux;
-
     private TimeActionCreator timeActionCreator;
 
     @Override
